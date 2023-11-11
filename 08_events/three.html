@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur JAVAScript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<!-- we write js scrite below body -->
+<script>
+    // setInterval(function(){
+    //     console.log("Hitesh",Date.now());
+    // },1000) // this event will keep on happening after every 1 sec interval
+
+    const sayHitest=function(str){
+        console.log("str",Date.now());
+    }
+    
+    // document.querySelector('#start').addEventListener('click',function(){
+    //     setInterval(sayHitest,1000);
+    // })
+    let i=0;
+    const saymyname=function(){
+        console.log("I'm the CEO of the company number",i);
+        i=i+1;
+    }
+    let intervalid;
+    document.querySelector('#start').addEventListener('click',function(){
+        intervalid=setInterval(saymyname,1000);
+    });
+    //to stop the interval
+    // clearInterval(refernce)//after passing the reference it will stop
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearInterval(intervalid);
+    });
+
+    //with the help of above code, on clicking the button it will start the execution
+    // and on clicking on stop, it will stop the execution
+    
+
+
+</script>
+</html>

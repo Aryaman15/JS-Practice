@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur Code</h1>
+    <button id="stop">Stop</button>
+</body>
+<!-- we write js scrite below body -->
+<script>
+    //handler-> callback with no name
+    setTimeout(function(){
+        console.log("Aryaman")
+    },2000) //2000 is 2 sec
+    //2 sec wait karega then one time Aryaman print kardega
+
+    //set interval->ek time do uss interval mein karta hi jaunga
+
+    const sayHitesh=function(){
+        console.log("Histesh")
+    }
+    const changetext=function(){
+        document.querySelector('h1').innerHTML="Best Js series"
+        setTimeout(sayHitesh,2000);
+    }
+    //After 2 sections heading will be changed
+    const changeMe=setTimeout(changetext,2000)
+    // even after bouding setTimeout under a var name still it will work as it own
+
+    //cleartimeout->need reference kis settimeout ko remove karna hai
+    // clearTimeout(changeMe)
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(changeMe)
+        console.log(stop);
+    }) // now after clicking stop before the set time changeMe will not execute 
+    
+</script>
+</html>

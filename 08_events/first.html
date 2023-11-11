@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" onclick="alert('owl')"></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<!-- IN JAVAScript ALL EVENTS RUN IN SEQUENTIAL MANNER -->
+<script>
+    // document.getElementById('owl').onclick=function(){
+    //     alert("owl clicked");
+    // }
+
+    //best approach->using even listener,mdn ->evenlistener list //here third parameter is by defualt false
+    // document.getElementById('owl').addEventListener('click',function(){
+    //     alert("owl clicked again");
+    // })
+
+    //attachEvent()->early time
+    document.getElementById('owl').addEventListener('click',function(e){
+        console.log(e);//e is the event->a pointer object will be recieved
+    },false)
+    //Interview must
+    //type, timestamp,defaultprevented
+    //target, toElement,srcElement,currentTarget,
+    //clientx,clientY, screenX,screenY
+    //alt keys, ctrl keys,shift keys,keycode
+     //event propogation
+    
+     //two types of event propogation
+     //default-false=>event bubbling->mostly used
+     //event capturing
+
+     document.getElementById('images').addEventListener('click',function(e){
+        console.log("clicked inside the url")
+    },false)
+     document.getElementById('owl').addEventListener('click',function(e){
+        console.log("clicked owl") //first owl will be printed then upper event will be clicked
+        e.stopPropagation();// now the event will not go to the upper bubble
+    },false)
+    //as bubble->inner se bhar, inside se outside->bubbling effect->when by default value is used i.e false
+    
+
+    //event capturing->when true is used
+    document.getElementById('images').addEventListener('click',function(e){
+        console.log("clicked inside the url")
+    },true)
+    document.getElementById('owl').addEventListener('click',function(e){
+        console.log("clicked owl")
+    },true)
+    //even capturing goes from top to bottom
+
+
+    //by default event bubbling is used as by default value is false
+    document.getElementById('google').addEventListener
+    ('click',function(e){
+        e.preventDefault();//==>to prevent the default action
+        e.stopPropagation();
+        console.log('Google clicked');
+    })
+
+    document.querySelector('#images').addEventListener('click',function(e){
+        console.log(e.target)//using e.target, the target will be shown
+        //we can also select parentnode
+        console.log(e.target.parentNode);
+        //tagName->give img,li,p,url
+        if(e.target.tagName=='IMG'){
+        //how to remove it now 
+        let removeIt=e.target.parentNode;
+        removeIt.remove(); // now it will be removed
+        }
+    },false)
+
+
+ </script>
+</html>
